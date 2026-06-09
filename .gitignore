@@ -1,0 +1,1 @@
+# Backend\nbackend/node_modules/\nbackend/uploads/*\n!backend/uploads/.gitkeep\nbackend/.env.local\n\n# Frontend\nfrontend/node_modules/\nfrontend/dist/\nfrontend/.cache/\n\n# OS\n.DS_Store\nThumbs.db\n\n# IDE\n.vscode/\n.idea/\n*.swp\n*.swo\n\n# Logs\n*.log\nnpm-debug.log*\nyarn-debug.log*\n
