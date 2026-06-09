@@ -69,7 +69,7 @@ const db = {
       endTime: '2026-06-10T12:00:00',
       attendees: 5,
       attachments: [],
-      status: 'pending', // pending, approved, rejected
+      status: 'pending',
       approvedBy: null,
       approvedAt: null,
       createdAt: '2026-06-09T08:00:00'

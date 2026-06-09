@@ -1,16 +1,27 @@
-# 📅 Meeting Room Booking System
+# 📅 ระบบจองห้องประชุม (Meeting Room Booking System)
 
-ระบบจองห้องประชุมแบบฟรี ที่มีฟีเจอร์ครบครัน
+## ✨ คุณสมบัติ
 
-## ✨ ฟีเจอร์
+- 👤 **ระบบล็อกอิน** - สามารถสร้างบัญชีและเข้าสู่ระบบได้
+- 🏢 **จดทะเบียนห้องประชุม** - แสดงรายการห้องประชุมทั้งหมด
+- ✏️ **จองห้องประชุม** - ผู้ใช้สามารถจองห้องประชุมได้
+- 📎 **แนบไฟล์** - สามารถแนบไฟล์ (PDF, Word, Excel, รูปภาพ) ได้
+- ✅ **ลงรับการจอง** - เจ้าของห้องสามารถลงรับหรือปฏิเสธการจองได้
+- 📋 **ติดตามการจอง** - ผู้ใช้สามารถดูสถานะการจองของตัวเองได้
 
-✅ **จองห้องประชุม** - ระบบการจองห้องแบบสมบูรณ์  
-✅ **แนบไฟล์** - สามารถแนบเอกสาร, สไลด์, รูปภาพ ได้  
-✅ **ลงรับการจอง** - ทั้งผู้จองและเจ้าของห้องสามารถลงรับได้  
-✅ **Responsive Design** - ใช้ได้ทั้ง Web และ Mobile  
-✅ **ฟรีใช้งาน** - Open Source  
+## 🛠️ Stack
 
-## 🚀 วิธีติดตั้ง
+**Backend:**
+- Node.js + Express
+- Multer (File Upload)
+- CORS
+
+**Frontend:**
+- React 18
+- Tailwind CSS
+- Fetch API
+
+## 📦 Installation
 
 ### Backend Setup
 
@@ -20,129 +31,91 @@ npm install
 npm start
 ```
 
-เซิร์ฟเวอร์จะรันที่ http://localhost:5000
+Server จะรันที่: `http://localhost:5000`
 
 ### Frontend Setup
 
-ใช้ Live Server เพื่อรัน `frontend/index.html`
-
 ```bash
-# ถ้าใช้ VS Code
-# 1. Install Live Server extension
-# 2. Right-click on index.html
-# 3. Select "Open with Live Server"
+cd frontend
+# ใช้ Node.js simple server หรือ Live Server
+npx http-server
 ```
 
-แอป Frontend จะรันที่ http://localhost:3000 (หรือ port ที่ Live Server กำหนด)
+Frontend จะรันที่: `http://localhost:8080`
 
 ## 🧪 Test Accounts
 
-| บทบาท | อีเมล | รหัสผ่าน |
+| Role | Email | Password |
 |------|-------|----------|
 | Admin | admin@test.com | admin123 |
-| Room Owner | owner@test.com | owner123 |
+| Owner | owner@test.com | owner123 |
 | User | user@test.com | user123 |
 
-## 📂 โครงสร้างไฟล์
+## 📁 Project Structure
 
 ```
 meeting-room-booking/
 ├── backend/
-│   ├── server.js          # Server หลัก
+│   ├── server.js          # Express server
 │   ├── package.json       # Dependencies
 │   ├── .env               # Environment variables
-│   └── uploads/           # โฟลเดอร์สำหรับเก็บไฟล์ที่แนบ
+│   └── uploads/           # Uploaded files
 ├── frontend/
-│   ├── index.html         # HTML หลัก
-│   ├── main.jsx           # React App
-│   └── index.css          # Styling
-└── README.md
+│   ├── index.html         # Main HTML
+│   ├── main.jsx           # React components
+│   ├── index.css          # Styles
+└── README.md              # Documentation
 ```
 
-## 🔧 ฟีเจอร์รายละเอียด
-
-### สำหรับผู้ใช้ทั่วไป
-- ดูรายชื่อห้องประชุมที่มีอยู่
-- จองห้องประชุมตามวันเวลาที่ต้องการ
-- เพิ่มรายละเอียดและแนบไฟล์ประกอบ
-- ดูสถานะการจอง (รอลงรับ/ลงรับแล้ว/ปฏิเสธ)
-
-### สำหรับเจ้าของห้อง
-- ดูการจองทั้งหมดของห้องที่เป็นเจ้าของ
-- ลงรับหรือปฏิเสธการจอง
-- ดูรายละเอียดและไฟล์แนบของการจอง
-
-## 🛠 Tech Stack
-
-- **Frontend:** React 18, Tailwind CSS
-- **Backend:** Node.js, Express.js
-- **Database:** In-memory (สามารถเปลี่ยนเป็น MongoDB ได้)
-- **File Upload:** Multer
-- **Styling:** Tailwind CSS
-
-## 📝 API Endpoints
+## 🚀 API Endpoints
 
 ### Authentication
 - `POST /api/auth/login` - เข้าสู่ระบบ
 
 ### Rooms
-- `GET /api/rooms` - ดูรายชื่อห้องทั้งหมด
+- `GET /api/rooms` - ดูห้องทั้งหมด
 - `GET /api/rooms/:id` - ดูรายละเอียดห้อง
 
 ### Bookings
-- `POST /api/bookings` - สร้างการจอง
+- `POST /api/bookings` - สร้างการจอง (พร้อมแนบไฟล์)
 - `GET /api/bookings` - ดูการจองทั้งหมด
-- `GET /api/bookings/room/:roomId` - ดูการจองของห้องที่กำหนด
-- `PUT /api/bookings/:id/approve` - ลงรับการจอง
-- `PUT /api/bookings/:id/reject` - ปฏิเสธการจอง
+- `GET /api/bookings/room/:roomId` - ดูการจองของห้องที่เฉพาะเจาะจง
 
 ### Approvals
 - `GET /api/approvals/:ownerId` - ดูการจองที่รอลงรับ
+- `PUT /api/bookings/:id/approve` - ลงรับการจอง
+- `PUT /api/bookings/:id/reject` - ปฏิเสธการจอง
 
-## 📦 File Upload
+### Files
+- `GET /uploads/:filename` - ดาวน์โหลดไฟล์
 
-สามารถแนบไฟล์ประเภท:
-- PDF (.pdf)
-- Word (.doc, .docx)
-- Excel (.xls, .xlsx)
-- รูปภาพ (.jpg, .png)
+## 💡 Usage
 
-ขนาดไฟล์สูงสุด: **50MB**
+### ผู้ใช้ (User)
+1. เข้าสู่ระบบ
+2. ดูห้องประชุมที่ใช้ได้
+3. เลือกห้องและจอง
+4. สามารถแนบไฟล์ได้
+5. ติดตามสถานะการจองในแท็บ "การจองของฉัน"
 
-## 🚀 ขั้นตอนแรก
+### เจ้าของห้อง (Owner)
+1. เข้าสู่ระบบเป็น Owner
+2. ไปยังแท็บ "ลงรับ"
+3. ดูการจองที่รอลงรับ
+4. ดูไฟล์แนบจากผู้จอง
+5. ลงรับหรือปฏิเสธการจอง
 
-1. Clone Repository
-   ```bash
-   git clone https://github.com/Nattapon150745/meeting-room-booking.git
-   ```
+## 📝 Notes
 
-2. ติดตั้ง Backend Dependencies
-   ```bash
-   cd backend
-   npm install
-   ```
+- ไฟล์จะถูกเก็บในโฟลเดอร์ `backend/uploads/`
+- ฐานข้อมูลเป็นแบบ In-Memory (สามารถเปลี่ยนเป็น MongoDB ได้)
+- สูงสุด 5 ไฟล์ต่อการจอง
+- ขนาดไฟล์สูงสุด 50MB
 
-3. สตาร์ท Backend
-   ```bash
-   npm start
-   ```
+## 🤝 Contributing
 
-4. เปิด Frontend ด้วย Live Server
-   - Backend: http://localhost:5000
-   - Frontend: http://localhost:5500 (หรือ port ที่ Live Server ใช้)
-
-5. ลองใช้ Account ทดสอบ
-   - Email: user@test.com
-   - Password: user123
+ยินดีต้อนรับการสนับสนุนและปรับปรุง!
 
 ## 📄 License
 
-MIT License - ใช้งานได้อย่างอิสระ
-
-## 👨‍💻 Author
-
-สร้างโดย Nattapon150745
-
----
-
-**สนใจพัฒนาเพิ่มเติมหรือมีข้อเสนอแนะ?** ✉️
+MIT License
